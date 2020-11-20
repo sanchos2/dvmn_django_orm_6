@@ -28,6 +28,9 @@ class TagQuerySet(models.QuerySet):
     def popular(self):
         return self.annotate(posts_count=Count('posts')).order_by('-posts_count')
 
+    def post_counter(self):
+        return self.annotate(posts_count=Count('posts'))
+
 
 class Post(models.Model):
     title = models.CharField("Заголовок", max_length=200)
